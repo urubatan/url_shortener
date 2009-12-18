@@ -1,0 +1,2 @@
+module UrlInfosHelper
+end

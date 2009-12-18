@@ -1,0 +1,13 @@
+<p>
+  <b>Href:</b>
+  <%=h @url_info.href %>
+</p>
+
+<p>
+  <b>Clicks:</b>
+  <%=h @url_info.clicks %>
+</p>
+
+
+<%= link_to 'Edit', edit_url_info_path(@url_info) %> |
+<%= link_to 'Back', url_infos_path %>

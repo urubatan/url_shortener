@@ -1,0 +1,20 @@
+<h1>Editing url_info</h1>
+
+<% form_for(@url_info) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :href %><br />
+    <%= f.text_field :href %>
+  </p>
+  <p>
+    <%= f.label :clicks %><br />
+    <%= f.text_field :clicks %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @url_info %> |
+<%= link_to 'Back', url_infos_path %>

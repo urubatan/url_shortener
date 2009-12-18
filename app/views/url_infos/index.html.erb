@@ -1,0 +1,22 @@
+<h1>Listing url_infos</h1>
+
+<table>
+  <tr>
+    <th>Href</th>
+    <th>Clicks</th>
+  </tr>
+
+<% @url_infos.each do |url_info| %>
+  <tr>
+    <td><%=h url_info.href %></td>
+    <td><%=h url_info.clicks %></td>
+    <td><%= link_to 'Show', url_info %></td>
+    <td><%= link_to 'Edit', edit_url_info_path(url_info) %></td>
+    <td><%= link_to 'Destroy', url_info, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New url_info', new_url_info_path %>
