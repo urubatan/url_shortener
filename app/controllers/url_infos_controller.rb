@@ -41,7 +41,7 @@ class UrlInfosController < ApplicationController
   # POST /url_infos.xml
   def create
     @url_info = UrlInfo.new(params[:url_info])
-
+    @url_info.clicks = 0
     respond_to do |format|
       if @url_info.save
         flash[:notice] = 'UrlInfo was successfully created.'

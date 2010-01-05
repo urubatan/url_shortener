@@ -2,7 +2,7 @@ class CreateUrlInfos < ActiveRecord::Migration
   def self.up
     create_table :url_infos do |t|
       t.string :href
-      t.int :clicks
+      t.integer :clicks
 
       t.timestamps
     end
