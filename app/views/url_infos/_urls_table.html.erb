@@ -1,0 +1,16 @@
+<table width="100%">
+  <tr>
+    <th>Original URL</th>
+    <th>Shortened URL</th>
+    <th>Clicks</th>
+  </tr>
+<% @url_infos.each do |url_info| %>
+  <tr>
+    <td><%=h url_info.href %></td>
+    <td><%=h url_for(:controller => 'redirector', :id => url_info.id, :only_path => false) %></td>
+    <td><%=h url_info.clicks %></td>
+    <td><%= link_to 'Go To', :controller => 'redirector', :id => url_info.id %></td>
+    <td><%= link_to 'Destroy', url_info, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

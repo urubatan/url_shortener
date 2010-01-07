@@ -1,0 +1,8 @@
+<% form_remote_for(@url_info) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :href, 'URL:' %>
+    <%= f.text_field :href %>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

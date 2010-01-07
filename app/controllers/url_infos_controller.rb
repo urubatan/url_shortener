@@ -15,18 +15,32 @@ class UrlInfosController < ApplicationController
   # POST /url_infos.xml
   def create
     @url_info = UrlInfo.new(params[:url_info])
+    @url_info.href = params[:href] if params[:href]
     @url_info.clicks = 0
     respond_to do |format|
       if @url_info.save
-        flash[:notice] = 'UrlInfo was successfully created.'
-        format.html { redirect_to(@url_info) }
+        format.html  do
+          flash[:notice] = 'UrlInfo was successfully created.'
+          redirect_to root_url
+        end
         format.xml  { render :xml => @url_info, :status => :created, :location => @url_info }
-	format.js { render :update do |page|
-          page.alert 'Just Created'
-        end }
+	format.js  do
+          @url_infos = UrlInfo.all
+          @url_info = UrlInfo.new
+          render :update do |page|
+            page.replace_html 'form', :partial => 'editor_form'
+            page.replace_html 'table', :partial => 'urls_table'
+            page.alert 'UrlInfo was successfully created.'
+          end 
+        end
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "index" }
         format.xml  { render :xml => @url_info.errors, :status => :unprocessable_entity }
+        format.js do
+          render :update do |page|
+            page.alert @url_info.errors.full_messages.join '\n'
+          end
+        end
       end
     end
   end
